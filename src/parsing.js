@@ -123,9 +123,13 @@ function getAllPromotions(){
     return promotions;
 }
 
+/**
+ * Return object with all orders
+ * @returns [{}]
+ */
 function getAllOrders(){
     const orderLines = parseCSV("orders.csv");
-    let orders = {};
+    let orders = [];
 
     for (let i = 1; i < orderLines.length; i++) {
         const parts = orderLines[i].split(',');
@@ -148,4 +152,15 @@ function getAllOrders(){
             console.error(e);
         }
     }
+
+    return orders;
 }
+
+module.exports = {
+    parseCSV,
+    getAllCustomers,
+    getAllProducts,
+    getAllShippingZones,
+    getAllPromotions,
+    getAllOrders
+};
